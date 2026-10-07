@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Session - Chiloba Mwabu</title>
+  <meta name="description" content="Schedule a consultation, tuition session, or event booking with Mr. Chiloba." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="navbar-root"></div>
+  <main id="main-root"></main>
+  <div id="footer-root"></div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="partials.js"></script>
+  <script>
+    document.getElementById('navbar-root').innerHTML = renderNavbar('bookings.html');
+    document.getElementById('main-root').innerHTML = renderBookingsPage();
+    document.getElementById('footer-root').innerHTML = renderFooter();
+    setupPage('bookings.html');
+  </script>
+  <script src="page-init.js"></script>
+</body>
+</html>
