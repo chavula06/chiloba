@@ -1,0 +1,22 @@
+{
+  "bookings": [
+    {
+      "name": "Jane Doe",
+      "email": "jane@example.com",
+      "phone": "+260977230272",
+      "service": "Career Consultation",
+      "date": "2026-10-20",
+      "time": "14:30",
+      "submitted_at": "2026-10-07T05:11:29.843Z"
+    }
+  ],
+  "contacts": [
+    {
+      "name": "John Smith",
+      "email": "john@example.com",
+      "subject": "Inquiry",
+      "message": "I would like to book a session.",
+      "submitted_at": "2026-10-07T05:11:51.491Z"
+    }
+  ]
+}

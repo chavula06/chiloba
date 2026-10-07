@@ -350,11 +350,16 @@ function initBookingForm() {
       }
     }
     if (Object.keys(errs).length === 0) {
-      console.log('Booking:', data);
-      document.getElementById('bookingsView').style.display = 'none';
-      document.getElementById('bookingsSuccess').style.display = 'block';
-      showToast('Booking request submitted! We will confirm within 24 hours.');
-      form.reset();
+      form.querySelector('button[type="submit"]').disabled = true;
+      fetch('/api/bookings', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+        .then((r) => r.json())
+        .then((res) => {
+          document.getElementById('bookingsView').style.display = 'none';
+          document.getElementById('bookingsSuccess').style.display = 'block';
+          showToast(res.message);
+        })
+        .catch((e) => { showToast(e.message || 'Something went wrong. Please try again.', 'error'); form.querySelector('button[type="submit"]').disabled = false; })
+        .finally(() => form.reset());
     }
   };
 }
@@ -384,11 +389,16 @@ function initContactForm() {
       if (f) f.classList.toggle('error', !!errs[k]);
     }
     if (Object.keys(errs).length === 0) {
-      console.log('Contact:', data);
-      document.getElementById('contactView').style.display = 'none';
-      document.getElementById('contactSuccess').style.display = 'block';
-      showToast('Message sent! We will get back to you within 24 hours.');
-      form.reset();
+      form.querySelector('button[type="submit"]').disabled = true;
+      fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+        .then((r) => r.json())
+        .then((res) => {
+          document.getElementById('contactView').style.display = 'none';
+          document.getElementById('contactSuccess').style.display = 'block';
+          showToast(res.message);
+        })
+        .catch((e) => { showToast(e.message || 'Something went wrong. Please try again.', 'error'); form.querySelector('button[type="submit"]').disabled = false; })
+        .finally(() => form.reset());
     }
   };
   const resetBtn = document.getElementById('resetContactBtn');
